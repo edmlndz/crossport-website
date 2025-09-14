@@ -271,11 +271,11 @@ export default function Home() {
 
             {/* Mobile Menu Button */}
             <button 
-              className="md:hidden"
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg className="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
@@ -284,19 +284,24 @@ export default function Home() {
           {isMenuOpen && (
             <div className="md:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
-                <a href="#inicio" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">{t.home}</a>
-                <a href="#sobre-mi" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">{t.about}</a>
-                <a href="#saas" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">{t.apps}</a>
-                <a href="#contacto" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">{t.contact}</a>
+                <a href="#inicio" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-emerald-600">{t.home}</a>
+                <a href="#sobre-mi" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-emerald-600">{t.about}</a>
+                <a href="#saas" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-emerald-600">{t.apps}</a>
+                <a href="#contacto" onClick={() => setIsMenuOpen(false)} className="block px-3 py-2 text-gray-700 hover:text-emerald-600">{t.contact}</a>
                 
                 {/* Mobile Language Toggle */}
-                <button
-                  onClick={toggleLanguage}
-                  className="w-10 h-10 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full transition-all duration-300 flex items-center justify-center mx-3 hover:scale-110 hover:shadow-lg cursor-pointer"
-                  title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
-                >
-                  <span className="text-sm font-bold">{language === 'es' ? 'EN' : 'ES'}</span>
-                </button>
+                <div className="px-3 py-2">
+                  <button
+                    onClick={toggleLanguage}
+                    className="flex items-center justify-between w-full text-gray-700 hover:text-emerald-600 transition-colors"
+                    title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+                  >
+                    <span>{language === 'es' ? 'Idioma' : 'Language'}</span>
+                    <span className="px-2 py-1 bg-emerald-100 text-emerald-700 rounded text-sm font-semibold">
+                      {language === 'es' ? 'ES' : 'EN'}
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
           )}
@@ -330,7 +335,7 @@ export default function Home() {
                     href="#sobre-mi" 
                     className="px-8 py-3 bg-white text-emerald-600 rounded-lg hover:bg-gray-100 transition-all duration-300 text-center font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                   >
-                    Conoce más
+{language === 'es' ? 'Conoce más' : 'Learn more'}
                   </a>
                 </div>
               </div>
