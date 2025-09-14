@@ -292,7 +292,10 @@ export default function Home() {
                 {/* Mobile Language Toggle */}
                 <div className="px-3 py-2">
                   <button
-                    onClick={toggleLanguage}
+                    onClick={() => {
+                      toggleLanguage()
+                      setIsMenuOpen(false)
+                    }}
                     className="flex items-center justify-between w-full text-gray-700 hover:text-emerald-600 transition-colors"
                     title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
                   >
